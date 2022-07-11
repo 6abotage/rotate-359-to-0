@@ -25,8 +25,12 @@ export default function App() {
 
   useEffect(() => {
     let timeoutId = setTimeout(() => setDegree(359), 2000);
-    return () => clearInterval(timeoutId);
-  }, [degree]);
+    let timeoutId2 = setTimeout(() => setDegree(0, 4000));
+    return () => {
+      clearInterval(timeoutId);
+      clearInterval(timeoutId2);
+    };
+  }, []);
 
   return (
     <div className="App">
