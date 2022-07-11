@@ -24,8 +24,15 @@ export default function App() {
   const [degree, setDegree] = useState(0);
 
   useEffect(() => {
-    let timeoutId = setTimeout(() => setDegree(359), 2000);
-    let timeoutId2 = setTimeout(() => setDegree(0, 4000));
+    let timeoutId = setTimeout(() => {
+      console.log("setDegree(350)");
+      setDegree(270);
+    }, 2000);
+
+    let timeoutId2 = setTimeout(() => {
+      console.log("setDegree(0)");
+      setDegree(0);
+    }, 4000);
     return () => {
       clearInterval(timeoutId);
       clearInterval(timeoutId2);
