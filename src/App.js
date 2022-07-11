@@ -1,5 +1,6 @@
-import "./styles.css";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import "./styles.css";
 
 const innerCircleAnimation = (degree) => ({
   initial: {
@@ -20,7 +21,13 @@ function transformTemplate({ rotate, translateX }) {
 }
 
 export default function App() {
-  var degree = 0;
+  const [degree, setDegree] = useState(0);
+
+  useEffect(() => {
+    let timeoutId = setTimeout(() => setDegree(359), 2000);
+    return () => clearInterval(timeoutId);
+  }, [degree]);
+
   return (
     <div className="App">
       <div className="circle">
