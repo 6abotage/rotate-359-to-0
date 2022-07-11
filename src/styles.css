@@ -1,0 +1,28 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  margin: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  width: 500px;
+  height: 500px;
+  border: 2px solid black;
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.2);
+  position: relative;
+}
+
+.innerCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid yellow;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  position: absolute;
+  transform: rotate(0deg) translateX(250px);
+}
