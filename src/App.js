@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import "./styles.css";
 
@@ -42,22 +42,6 @@ function rotateThis(degree, setDegree, nR) {
 export default function App() {
   const [input, setInput] = useState(0);
   const [degree, setDegree] = useState(0);
-  console.log("degree:", degree);
-
-  /* useEffect(() => {
-    let timeoutId = setTimeout(() => {
-      rotateThis(degree, setDegree, 270);
-    }, 2000);
-
-    let timeoutId2 = setTimeout(() => {
-      rotateThis(degree, setDegree, 180);
-    }, 4000);
-
-    return () => {
-      clearInterval(timeoutId);
-      clearInterval(timeoutId2);
-    };
-  }, []); */
 
   return (
     <div className="App">
