@@ -20,9 +20,10 @@ function transformTemplate({ rotate, translateX }) {
   return `rotate(${rotate}) translateX(${translateX})`;
 }
 
-function rotateThis(element, nR) {
+function rotateThis(degree, setDegree, nR) {
   var aR;
-  rot = rot || 0; // if rot undefined or 0, make 0, else rot
+  var rot;
+  rot = degree || 0; // if rot undefined or 0, make 0, else rot
   aR = rot % 360;
   if (aR < 0) {
     aR += 360;
@@ -34,30 +35,41 @@ function rotateThis(element, nR) {
     rot += 360;
   }
   rot += nR - aR;
-  element.style.transform = "rotate( " + rot + "deg )";
+  console.log("rot in rotateThis: ", rot);
+  setDegree(rot);
 }
 
 export default function App() {
+  const [input, setInput] = useState(0);
   const [degree, setDegree] = useState(0);
+  console.log("degree:", degree);
 
-  useEffect(() => {
+  /* useEffect(() => {
     let timeoutId = setTimeout(() => {
-      console.log("setDegree(350)");
-      setDegree(270);
+      rotateThis(degree, setDegree, 270);
     }, 2000);
 
     let timeoutId2 = setTimeout(() => {
-      console.log("setDegree(0)");
-      setDegree(0);
+      rotateThis(degree, setDegree, 180);
     }, 4000);
+
     return () => {
       clearInterval(timeoutId);
       clearInterval(timeoutId2);
     };
-  }, []);
+  }, []); */
 
   return (
     <div className="App">
+      <button onClick={() => rotateThis(degree, setDegree, input)}>
+        {" "}
+        set Degree{" "}
+      </button>
+      <input
+        type="number"
+        value={input}
+        onChange={(event) => setInput(event.target.value)}
+      />
       <div className="circle">
         <motion.div
           className="innerCircle"
